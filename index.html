@@ -8,7 +8,7 @@
 
 <title>Glide Esports</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 
 <style>
@@ -19,48 +19,31 @@
     box-sizing:border-box;
 }
 
+:root{
+
+    --bg:#0B0B0C;
+    --border:#232326;
+    --text:#F2F1EE;
+    --text-dim:#8C8C91;
+    --accent:#7C5CFC;
+    --accent-soft:rgba(124,92,252,0.1);
+
+}
+
 
 body{
 
-    background:#09090B;
-    color:white;
+    background:var(--bg);
+    color:var(--text);
     font-family:Inter,sans-serif;
     overflow-x:hidden;
 
 }
 
 
-/* Animated Background Glow */
-
-body::before{
-
-    content:"";
-    position:fixed;
-    inset:-200px;
-
-    background:
-    radial-gradient(circle at 20% 20%, #8B5CF655, transparent 35%),
-    radial-gradient(circle at 80% 80%, #C084FC33, transparent 40%);
-
-    animation:moveGlow 10s infinite alternate;
-
-    z-index:-2;
-
+a{
+    color:inherit;
 }
-
-
-@keyframes moveGlow{
-
-    from{
-        transform:translate(0,0);
-    }
-
-    to{
-        transform:translate(80px,-40px);
-    }
-
-}
-
 
 
 /* Navigation */
@@ -68,37 +51,29 @@ body::before{
 
 nav{
 
-    width:90%;
-    margin:25px auto;
+    width:100%;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:20px 35px;
+    padding:26px 7%;
 
-    background:#121218aa;
+    background:var(--bg);
 
-    backdrop-filter:blur(15px);
-
-    border:1px solid #ffffff15;
-
-    border-radius:20px;
-
-    position:sticky;
-    top:20px;
-    z-index:100;
+    border-bottom:1px solid var(--border);
 
 }
 
 
 .logo{
 
-    font-family:Orbitron;
-    font-size:30px;
-    font-weight:900;
+    font-family:Archivo;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:2px;
 
-    color:#C084FC;
+    color:var(--text);
 
 }
 
@@ -106,7 +81,7 @@ nav{
 nav ul{
 
     display:flex;
-    gap:35px;
+    gap:40px;
     list-style:none;
 
 }
@@ -114,17 +89,41 @@ nav ul{
 
 nav a{
 
-    color:#ddd;
+    color:var(--text-dim);
     text-decoration:none;
+    font-size:15px;
 
-    transition:.3s;
+    position:relative;
+
+    transition:color .2s;
+
+}
+
+
+nav a::after{
+
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:1px;
+    background:var(--accent);
+    transition:width .25s ease;
 
 }
 
 
 nav a:hover{
 
-    color:#C084FC;
+    color:var(--text);
+
+}
+
+
+nav a:hover::after{
+
+    width:100%;
 
 }
 
@@ -135,7 +134,7 @@ nav a:hover{
 
 .hero{
 
-    min-height:85vh;
+    min-height:78vh;
 
     display:flex;
 
@@ -143,7 +142,11 @@ nav a:hover{
 
     justify-content:space-between;
 
-    width:85%;
+    gap:60px;
+
+    width:86%;
+
+    max-width:1280px;
 
     margin:auto;
 
@@ -152,58 +155,41 @@ nav a:hover{
 }
 
 
-
-/* Giant Background Text */
-
-
-.background-text{
-
-    position:absolute;
-
-    top:10%;
-
-    left:0;
-
-    font-family:Orbitron;
-
-    font-size:240px;
-
-    font-weight:900;
-
-    color:white;
-
-    opacity:.03;
-
-    z-index:-1;
-
-}
-
-
-
-
 .hero-text{
 
     max-width:600px;
 
-    animation:fadeIn 1.5s;
+}
+
+
+.eyebrow{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--accent);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:20px;
 
 }
 
 
 .hero h1{
 
-    font-family:Orbitron;
+    font-family:Archivo;
 
-    font-size:75px;
+    font-size:68px;
+    font-weight:900;
 
-    line-height:1;
+    line-height:1.02;
+    letter-spacing:-1px;
 
 }
 
 
 .hero h1 span{
 
-    color:#C084FC;
+    color:var(--accent);
 
 }
 
@@ -211,13 +197,15 @@ nav a:hover{
 
 .hero p{
 
-    margin-top:25px;
+    margin-top:24px;
 
-    color:#A1A1AA;
+    color:var(--text-dim);
 
-    font-size:20px;
+    font-size:17px;
 
-    line-height:1.6;
+    line-height:1.7;
+
+    max-width:480px;
 
 }
 
@@ -228,7 +216,10 @@ nav a:hover{
 
 .buttons{
 
-    margin-top:40px;
+    margin-top:38px;
+
+    display:flex;
+    gap:14px;
 
 }
 
@@ -237,56 +228,58 @@ nav a:hover{
 
     display:inline-block;
 
-    padding:15px 35px;
+    padding:14px 30px;
 
-    border-radius:12px;
+    border-radius:8px;
 
     text-decoration:none;
 
-    margin-right:15px;
+    font-size:15px;
+    font-weight:500;
 
-    transition:.3s;
+    transition:background .2s, color .2s, border-color .2s;
 
 }
 
 
 .primary{
 
-    background:#8B5CF6;
+    background:var(--accent);
 
-    color:white;
+    color:#0B0B0C;
+
+    font-weight:600;
 
 }
 
 
 .primary:hover{
 
-    box-shadow:0 0 30px #8B5CF6;
-
-    transform:translateY(-5px);
+    background:#8F72FF;
 
 }
 
 
 .secondary{
 
-    border:1px solid #8B5CF6;
+    border:1px solid var(--border);
 
-    color:white;
+    color:var(--text);
 
 }
 
 
 .secondary:hover{
 
-    background:#8B5CF6;
+    border-color:var(--accent);
+    color:var(--accent);
 
 }
 
 
 
 
-/* Logo */
+/* Logo mark */
 
 
 .logo-area{
@@ -297,21 +290,23 @@ nav a:hover{
 
     align-items:center;
 
+    flex-shrink:0;
+
 }
 
 
 
 .logo-placeholder{
 
-    width:320px;
+    width:280px;
 
-    height:320px;
+    height:280px;
 
     border-radius:50%;
 
-    background:#121218;
+    background:#141416;
 
-    border:2px solid #8B5CF6;
+    border:1px solid var(--border);
 
     display:flex;
 
@@ -320,23 +315,6 @@ nav a:hover{
     align-items:center;
 
     overflow:hidden;
-
-
-    font-family:Orbitron;
-
-    font-size:55px;
-
-    font-weight:900;
-
-    color:#C084FC;
-
-
-    box-shadow:
-
-    0 0 50px #8B5CF655;
-
-
-    animation:float 4s infinite ease-in-out;
 
 }
 
@@ -353,74 +331,28 @@ nav a:hover{
 
 
 
-@keyframes float{
-
-    0%,100%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-25px);
-
-    }
-
-}
-
-
-
-/* Scroll */
+/* Scroll cue */
 
 
 .scroll{
 
     position:absolute;
 
-    bottom:40px;
+    bottom:30px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    color:#A1A1AA;
+    color:var(--text-dim);
 
-    animation:bounce 2s infinite;
+    font-family:'JetBrains Mono',monospace;
 
-}
+    font-size:12px;
 
+    letter-spacing:2px;
 
-@keyframes bounce{
-
-    50%{
-
-        transform:translate(-50%,20px);
-
-    }
-
-}
-
-
-
-/* Fade */
-
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-        transform:translateY(30px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
+    text-transform:uppercase;
 
 }
 
@@ -431,8 +363,9 @@ nav a:hover{
 
 .news{
 
-    width:85%;
-    margin:160px auto 100px;
+    width:86%;
+    max-width:1280px;
+    margin:100px auto 120px;
 
 }
 
@@ -445,13 +378,17 @@ nav a:hover{
     flex-wrap:wrap;
     gap:20px;
 
+    padding-bottom:24px;
+
+    border-bottom:1px solid var(--border);
+
 }
 
 .news-eyebrow{
 
     font-family:'JetBrains Mono',monospace;
-    color:#8B5CF6;
-    font-size:14px;
+    color:var(--accent);
+    font-size:13px;
     letter-spacing:3px;
     text-transform:uppercase;
 
@@ -459,17 +396,19 @@ nav a:hover{
 
 .news-head h2{
 
-    font-family:Orbitron;
-    font-size:42px;
-    margin-top:8px;
+    font-family:Archivo;
+    font-size:34px;
+    font-weight:800;
+    margin-top:10px;
+    letter-spacing:-0.5px;
 
 }
 
 .news-sub{
 
-    color:#71717A;
-    font-size:15px;
-    max-width:340px;
+    color:var(--text-dim);
+    font-size:14px;
+    max-width:320px;
     line-height:1.6;
 
 }
@@ -477,11 +416,8 @@ nav a:hover{
 
 .patch-log{
 
-    border-left:2px solid #8B5CF633;
-
     display:flex;
     flex-direction:column;
-    gap:0;
 
 }
 
@@ -490,85 +426,15 @@ nav a:hover{
 
     position:relative;
 
-    padding:35px 0 35px 45px;
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:30px;
 
-    border-bottom:1px solid #ffffff0d;
+    padding:36px 0;
 
-    opacity:0;
-    transform:translateY(30px);
-    transition:opacity .7s ease, transform .7s ease;
-
-}
-
-.patch.visible{
-
-    opacity:1;
-    transform:translateY(0);
+    border-bottom:1px solid var(--border);
 
 }
-
-.patch::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:-7px;
-    top:42px;
-
-    width:12px;
-    height:12px;
-
-    border-radius:50%;
-
-    background:#09090B;
-
-    border:2px solid #8B5CF6;
-
-}
-
-.patch:hover::before{
-
-    background:#8B5CF6;
-    box-shadow:0 0 12px #8B5CF6;
-
-}
-
-
-.patch-meta{
-
-    display:flex;
-    align-items:center;
-    gap:18px;
-
-    margin-bottom:14px;
-
-    flex-wrap:wrap;
-
-}
-
-
-.patch-tag{
-
-    font-family:'JetBrains Mono',monospace;
-
-    font-size:12px;
-
-    letter-spacing:1px;
-
-    padding:5px 12px;
-
-    border-radius:6px;
-
-    text-transform:uppercase;
-
-}
-
-
-.tag-match{ background:#8B5CF622; color:#C084FC; }
-.tag-roster{ background:#22c55e22; color:#4ade80; }
-.tag-event{ background:#f59e0b22; color:#fbbf24; }
-.tag-community{ background:#38bdf822; color:#7dd3fc; }
 
 
 .patch-date{
@@ -577,33 +443,74 @@ nav a:hover{
 
     font-size:13px;
 
-    color:#52525B;
+    color:var(--text-dim);
+
+    padding-top:4px;
+
+}
+
+
+.patch-body{
+
+    max-width:640px;
+
+}
+
+
+.patch-tag{
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    font-family:'JetBrains Mono',monospace;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    color:var(--text-dim);
+
+    margin-bottom:14px;
+
+}
+
+
+.patch-tag::before{
+
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--accent);
 
 }
 
 
 .patch h3{
 
-    font-family:Orbitron;
+    font-family:Archivo;
 
-    font-size:24px;
+    font-size:21px;
 
     font-weight:700;
 
-    margin-bottom:12px;
+    margin-bottom:10px;
+
+    letter-spacing:-0.2px;
 
 }
 
 
 .patch p{
 
-    color:#A1A1AA;
+    color:var(--text-dim);
 
-    font-size:16px;
+    font-size:15px;
 
     line-height:1.7;
-
-    max-width:700px;
 
 }
 
@@ -616,23 +523,23 @@ nav a:hover{
 
     font-size:14px;
 
-    color:#C084FC;
+    color:var(--text);
 
     text-decoration:none;
 
-    border-bottom:1px solid #8B5CF655;
+    border-bottom:1px solid var(--border);
 
     padding-bottom:2px;
 
-    transition:.3s;
+    transition:border-color .2s, color .2s;
 
 }
 
 
 .patch-read:hover{
 
-    color:white;
-    border-color:white;
+    color:var(--accent);
+    border-color:var(--accent);
 
 }
 
@@ -640,8 +547,7 @@ nav a:hover{
 .news-more{
 
     display:flex;
-    justify-content:center;
-    margin-top:50px;
+    margin-top:40px;
 
 }
 
@@ -649,13 +555,13 @@ nav a:hover{
 .news-more a{
 
     font-family:'JetBrains Mono',monospace;
-    font-size:14px;
-    color:#A1A1AA;
+    font-size:13px;
+    color:var(--text-dim);
     text-decoration:none;
-    border:1px solid #ffffff22;
-    padding:14px 30px;
-    border-radius:10px;
-    transition:.3s;
+    border:1px solid var(--border);
+    padding:13px 28px;
+    border-radius:8px;
+    transition:border-color .2s, color .2s;
     letter-spacing:1px;
 
 }
@@ -663,19 +569,8 @@ nav a:hover{
 
 .news-more a:hover{
 
-    border-color:#8B5CF6;
-    color:#C084FC;
-
-}
-
-
-@media (prefers-reduced-motion: reduce){
-
-    .patch{
-        transition:none;
-        opacity:1;
-        transform:none;
-    }
+    border-color:var(--accent);
+    color:var(--accent);
 
 }
 
@@ -689,27 +584,47 @@ nav a:hover{
 
 .hero{
 
-    flex-direction:column;
+    flex-direction:column-reverse;
 
     text-align:center;
 
+    min-height:auto;
+
+    padding:70px 0 100px;
+
+}
+
+.hero-text{
+    max-width:100%;
+}
+
+.eyebrow{
+    display:flex;
+    justify-content:center;
+}
+
+.hero p{
+    margin-left:auto;
+    margin-right:auto;
 }
 
 
 .hero h1{
 
-    font-size:50px;
+    font-size:42px;
 
+}
+
+.buttons{
+    justify-content:center;
 }
 
 
 .logo-placeholder{
 
-    width:220px;
+    width:180px;
 
-    height:220px;
-
-    margin-top:50px;
+    height:180px;
 
 }
 
@@ -721,34 +636,21 @@ nav ul{
 }
 
 
-.background-text{
-
-    font-size:120px;
-
-}
-
-
 .news{
 
-    width:90%;
-    margin:100px auto 60px;
+    margin:70px auto 70px;
 
 }
 
 .news-head h2{
 
-    font-size:32px;
+    font-size:28px;
 
 }
 
 .patch{
 
-    padding-left:30px;
-
-}
-
-.patch-meta{
-
+    grid-template-columns:1fr;
     gap:10px;
 
 }
@@ -799,14 +701,9 @@ GLIDE
 <section class="hero">
 
 
-<div class="background-text">
-GLIDE
-</div>
-
-
-
 <div class="hero-text">
 
+<div class="eyebrow">CS2 · Competitive</div>
 
 <h1>
 Glide<br>
@@ -817,8 +714,6 @@ Glide<br>
 <p>
 
 Competitive Counter-Strike 2 organisation.
-<br><br>
-
 Building a strong roster, competing in leagues,
 tournaments and creating a community around
 competitive esports.
@@ -864,7 +759,7 @@ Upcoming Match
 
 <div class="scroll">
 
-↓ Scroll
+Scroll
 
 </div>
 
@@ -882,12 +777,12 @@ Upcoming Match
 <div class="news-head">
 
 <div>
-<div class="news-eyebrow">// changelog</div>
+<div class="news-eyebrow">Changelog</div>
 <h2>Latest from Glide</h2>
 </div>
 
 <div class="news-sub">
-
+Match recaps, roster moves and announcements, logged as they happen.
 </div>
 
 </div>
@@ -898,10 +793,11 @@ Upcoming Match
 
 <article class="patch">
 
-<div class="patch-meta">
-<span class="patch-tag tag-event">Announcement</span>
-<span class="patch-date">2027.07.27</span>
-</div>
+<div class="patch-date">2027.07.27</div>
+
+<div class="patch-body">
+
+<div class="patch-tag">Announcement</div>
 
 <h3>The start of Glide Esports' journey</h3>
 
@@ -909,45 +805,16 @@ Upcoming Match
 This is the first post. Roster is currently in progress, updating soon 🫣
 </p>
 
+</div>
+
 </article>
 
 
 </div>
 
 
-<div class="news-more">
-
-<a href="pages/news.html">View full news archive</a>
-
-</div>
-
-
 </section>
 
-
-
-<script>
-
-const patches = document.querySelectorAll('.patch');
-
-const observer = new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-
-        }
-
-    });
-
-},{ threshold:.2 });
-
-patches.forEach(p=>observer.observe(p));
-
-</script>
 
 
 </body>
