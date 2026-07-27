@@ -8,7 +8,7 @@
 
 <title>Glide Esports</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
 
 <style>
@@ -84,6 +84,10 @@ nav{
     border:1px solid #ffffff15;
 
     border-radius:20px;
+
+    position:sticky;
+    top:20px;
+    z-index:100;
 
 }
 
@@ -408,6 +412,261 @@ nav a:hover{
 }
 
 
+/* ===================== */
+/* NEWS / PATCH NOTES     */
+/* ===================== */
+
+.news{
+
+    width:85%;
+    margin:160px auto 100px;
+
+}
+
+.news-head{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:50px;
+    flex-wrap:wrap;
+    gap:20px;
+
+}
+
+.news-eyebrow{
+
+    font-family:'JetBrains Mono',monospace;
+    color:#8B5CF6;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+}
+
+.news-head h2{
+
+    font-family:Orbitron;
+    font-size:42px;
+    margin-top:8px;
+
+}
+
+.news-sub{
+
+    color:#71717A;
+    font-size:15px;
+    max-width:340px;
+    line-height:1.6;
+
+}
+
+
+.patch-log{
+
+    border-left:2px solid #8B5CF633;
+
+    display:flex;
+    flex-direction:column;
+    gap:0;
+
+}
+
+
+.patch{
+
+    position:relative;
+
+    padding:35px 0 35px 45px;
+
+    border-bottom:1px solid #ffffff0d;
+
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .7s ease, transform .7s ease;
+
+}
+
+.patch.visible{
+
+    opacity:1;
+    transform:translateY(0);
+
+}
+
+.patch::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-7px;
+    top:42px;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#09090B;
+
+    border:2px solid #8B5CF6;
+
+}
+
+.patch:hover::before{
+
+    background:#8B5CF6;
+    box-shadow:0 0 12px #8B5CF6;
+
+}
+
+
+.patch-meta{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    margin-bottom:14px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.patch-tag{
+
+    font-family:'JetBrains Mono',monospace;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    padding:5px 12px;
+
+    border-radius:6px;
+
+    text-transform:uppercase;
+
+}
+
+
+.tag-match{ background:#8B5CF622; color:#C084FC; }
+.tag-roster{ background:#22c55e22; color:#4ade80; }
+.tag-event{ background:#f59e0b22; color:#fbbf24; }
+.tag-community{ background:#38bdf822; color:#7dd3fc; }
+
+
+.patch-date{
+
+    font-family:'JetBrains Mono',monospace;
+
+    font-size:13px;
+
+    color:#52525B;
+
+}
+
+
+.patch h3{
+
+    font-family:Orbitron;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+
+.patch p{
+
+    color:#A1A1AA;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    max-width:700px;
+
+}
+
+
+.patch-read{
+
+    display:inline-block;
+
+    margin-top:16px;
+
+    font-size:14px;
+
+    color:#C084FC;
+
+    text-decoration:none;
+
+    border-bottom:1px solid #8B5CF655;
+
+    padding-bottom:2px;
+
+    transition:.3s;
+
+}
+
+
+.patch-read:hover{
+
+    color:white;
+    border-color:white;
+
+}
+
+
+.news-more{
+
+    display:flex;
+    justify-content:center;
+    margin-top:50px;
+
+}
+
+
+.news-more a{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    color:#A1A1AA;
+    text-decoration:none;
+    border:1px solid #ffffff22;
+    padding:14px 30px;
+    border-radius:10px;
+    transition:.3s;
+    letter-spacing:1px;
+
+}
+
+
+.news-more a:hover{
+
+    border-color:#8B5CF6;
+    color:#C084FC;
+
+}
+
+
+@media (prefers-reduced-motion: reduce){
+
+    .patch{
+        transition:none;
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+
 
 /* Mobile */
 
@@ -456,6 +715,31 @@ nav ul{
 }
 
 
+.news{
+
+    width:90%;
+    margin:100px auto 60px;
+
+}
+
+.news-head h2{
+
+    font-size:32px;
+
+}
+
+.patch{
+
+    padding-left:30px;
+
+}
+
+.patch-meta{
+
+    gap:10px;
+
+}
+
 
 }
 
@@ -487,7 +771,7 @@ GLIDE
 
 <li><a href="pages/standings.html">Standings</a></li>
 
-<li><a href="pages/news.html">News</a></li>
+<li><a href="#news">News</a></li>
 
 <li><a href="pages/contact.html">Contact</a></li>
 
@@ -574,6 +858,145 @@ GLIDE
 
 </section>
 
+
+
+<!-- ===================== -->
+<!-- NEWS / PATCH NOTES    -->
+<!-- ===================== -->
+
+<section class="news" id="news">
+
+<div class="news-head">
+
+<div>
+<div class="news-eyebrow">// changelog</div>
+<h2>Latest from Glide</h2>
+</div>
+
+<div class="news-sub">
+Match recaps, roster moves and announcements, logged as they happen.
+</div>
+
+</div>
+
+
+<div class="patch-log">
+
+
+<article class="patch">
+
+<div class="patch-meta">
+<span class="patch-tag tag-match">Match Recap</span>
+<span class="patch-date">2026.07.25</span>
+</div>
+
+<h3>Glide take down Nexus Point 2-1 in the ESEA Advanced final</h3>
+
+<p>
+A back-and-forth series that came down to overtime on Ancient. Our anchor on
+Overpass held the line the whole way, and the map 3 pistol swept the round 12-3.
+Advancing to Main next season.
+</p>
+
+<a class="patch-read" href="pages/news.html">Read full recap →</a>
+
+</article>
+
+
+<article class="patch">
+
+<div class="patch-meta">
+<span class="patch-tag tag-roster">Roster</span>
+<span class="patch-date">2026.07.18</span>
+</div>
+
+<h3>Welcome "juno" to the starting five</h3>
+
+<p>
+Our new AWPer joins from the academy squad after three standout qualifier
+performances this split. Expect to see the swap in rotation starting this
+weekend's series.
+</p>
+
+<a class="patch-read" href="pages/roster.html">View roster →</a>
+
+</article>
+
+
+<article class="patch">
+
+<div class="patch-meta">
+<span class="patch-tag tag-event">Announcement</span>
+<span class="patch-date">2026.07.10</span>
+</div>
+
+<h3>Glide is heading to the LAN qualifier in September</h3>
+
+<p>
+We've locked in our spot at the regional LAN qualifier. Bracket and travel
+details are being finalised — full schedule drops next week.
+</p>
+
+<a class="patch-read" href="pages/matches.html">See schedule →</a>
+
+</article>
+
+
+<article class="patch">
+
+<div class="patch-meta">
+<span class="patch-tag tag-community">Community</span>
+<span class="patch-date">2026.07.02</span>
+</div>
+
+<h3>Discord scrim night is now open to the community</h3>
+
+<p>
+Every Wednesday we're opening up a lobby for fans and amateur teams to scrim
+against our academy roster. Drop into the Discord to sign up for a slot.
+</p>
+
+<a class="patch-read" href="pages/contact.html">Join the Discord →</a>
+
+</article>
+
+
+</div>
+
+
+<div class="news-more">
+
+<a href="pages/news.html">View full news archive</a>
+
+</div>
+
+
+</section>
+
+
+
+<script>
+
+const patches = document.querySelectorAll('.patch');
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+
+        }
+
+    });
+
+},{ threshold:.2 });
+
+patches.forEach(p=>observer.observe(p));
+
+</script>
 
 
 </body>
