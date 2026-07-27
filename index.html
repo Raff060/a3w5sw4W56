@@ -1,62 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Team Name</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #121212;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        .container {
-            max-width: 700px;
-            padding: 20px;
-        }
+<style>
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        p {
-            color: #b3b3b3;
-            font-size: 1.2rem;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
+body{
+    font-family:Inter,sans-serif;
+    background:#090909;
+    color:white;
+}
 
-        .button:hover {
-            background: #45a049;
-        }
-    </style>
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top,#6a00ff22,transparent 55%),
+    radial-gradient(circle at bottom,#9b4dff11,transparent 60%);
+    z-index:-1;
+}
+
+/* Navigation */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    position:sticky;
+    top:0;
+    background:#111111dd;
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #2c2c2c;
+}
+
+.logo{
+    font-family:Orbitron;
+    color:#b56cff;
+    font-size:28px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#b56cff;
+}
+
+/* Hero */
+
+.hero{
+    min-height:85vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+.hero h1{
+    font-family:Orbitron;
+    font-size:70px;
+    color:#c28cff;
+}
+
+.hero p{
+    margin-top:20px;
+    color:#cfcfcf;
+    font-size:20px;
+}
+
+.buttons{
+    margin-top:40px;
+}
+
+.btn{
+    display:inline-block;
+    margin:10px;
+    padding:15px 35px;
+    border-radius:10px;
+    text-decoration:none;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.primary{
+    background:#8d35ff;
+    color:white;
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px #8d35ff;
+}
+
+.secondary{
+    border:2px solid #8d35ff;
+    color:white;
+}
+
+.secondary:hover{
+    background:#8d35ff;
+}
+
+/* Sections */
+
+section{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:70px 0;
+}
+
+h2{
+    font-family:Orbitron;
+    margin-bottom:30px;
+    color:#d6b1ff;
+}
+
+/* Cards */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#151515;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #292929;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#8d35ff;
+    box-shadow:0 0 20px #8d35ff44;
+}
+
+/* Match */
+
+.match{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    background:#151515;
+    padding:35px;
+    border-radius:20px;
+}
+
+.vs{
+    font-family:Orbitron;
+    font-size:42px;
+    color:#8d35ff;
+}
+
+/* Players */
+
+.player{
+    text-align:center;
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    background:#8d35ff;
+    border-radius:50%;
+    margin:auto;
+    margin-bottom:15px;
+}
+
+/* Stats */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:#151515;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.stat h3{
+    color:#8d35ff;
+    font-size:40px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #222;
+    color:#999;
+}
+
+.socials a{
+    color:white;
+    margin:15px;
+    text-decoration:none;
+}
+
+.socials a:hover{
+    color:#b56cff;
+}
+
+</style>
+
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome!</h1>
-        <p>This website is hosted for free using GitHub Pages.</p>
+<nav>
 
-        <a href="https://github.com" class="button">Visit GitHub</a>
-    </div>
+<div class="logo">YOUR TEAM</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Roster</a></li>
+<li><a href="#">Matches</a></li>
+<li><a href="#">News</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+</nav>
+
+<div class="hero">
+
+<div>
+
+<h1>YOUR TEAM</h1>
+
+<p>Competing in Counter-Strike 2</p>
+
+<div class="buttons">
+
+<a class="btn primary" href="#">View Roster</a>
+
+<a class="btn secondary" href="#">Latest Matches</a>
+
+</div>
+
+</div>
+
+</div>
+
+<section>
+
+<h2>Upcoming Match</h2>
+
+<div class="match">
+
+<div>
+<h3>Your Team</h3>
+</div>
+
+<div class="vs">
+VS
+</div>
+
+<div>
+<h3>Enemy Team</h3>
+<p>Saturday • 8:00 PM BST</p>
+<p>Best of 3</p>
+<br>
+<a class="btn primary" href="#">Watch Stream</a>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Latest News</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>New Signing</h3>
+<br>
+<p>Welcome our newest player to the roster.</p>
+</div>
+
+<div class="card">
+<h3>2-0 Victory</h3>
+<br>
+<p>Another convincing league win.</p>
+</div>
+
+<div class="card">
+<h3>Upcoming Tournament</h3>
+<br>
+<p>We have qualified for the next event.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Roster Preview</h2>
+
+<div class="grid">
+
+<div class="card player">
+<div class="avatar"></div>
+<h3>Player 1</h3>
+<p>AWPer</p>
+</div>
+
+<div class="card player">
+<div class="avatar"></div>
+<h3>Player 2</h3>
+<p>IGL</p>
+</div>
+
+<div class="card player">
+<div class="avatar"></div>
+<h3>Player 3</h3>
+<p>Rifler</p>
+</div>
+
+<div class="card player">
+<div class="avatar"></div>
+<h3>Coach</h3>
+<p>Coach</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Team Statistics</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h3>24</h3>
+<p>Matches</p>
+</div>
+
+<div class="stat">
+<h3>18</h3>
+<p>Wins</p>
+</div>
+
+<div class="stat">
+<h3>6</h3>
+<p>Losses</p>
+</div>
+
+<div class="stat">
+<h3>75%</h3>
+<p>Win Rate</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="socials">
+
+<a href="#">Discord</a>
+
+<a href="#">X</a>
+
+<a href="#">Twitch</a>
+
+<a href="#">Steam</a>
+
+</div>
+
+<br>
+
+© 2026 Your Team. All Rights Reserved.
+
+</footer>
 
 </body>
 </html>
