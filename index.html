@@ -67,6 +67,15 @@ nav{
 }
 
 
+.logo-group{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+}
+
+
 .logo{
 
     font-family:Archivo;
@@ -75,6 +84,38 @@ nav{
     letter-spacing:2px;
 
     color:var(--text);
+
+}
+
+
+.discord-link{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    line-height:0;
+
+    opacity:0.85;
+
+    transition:opacity .2s, transform .2s;
+
+}
+
+
+.discord-link img{
+
+    width:22px;
+    height:22px;
+    display:block;
+
+}
+
+
+.discord-link:hover{
+
+    opacity:1;
+    transform:translateY(-1px);
 
 }
 
@@ -762,8 +803,16 @@ nav ul{
 
 <nav>
 
+<div class="logo-group">
+
 <div class="logo">
 GLIDE
+</div>
+
+<a class="discord-link" href="https://discord.gg/mQf6R8ZS3w" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
+<img src="icons8-discord-new-32.png" alt="Discord" width="22" height="22">
+</a>
+
 </div>
 
 
