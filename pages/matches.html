@@ -1,1 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Matches · Glide Esports</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --bg:#0B0B0C;
+    --border:#232326;
+    --text:#F2F1EE;
+    --text-dim:#8C8C91;
+    --accent:#7C5CFC;
+    --accent-soft:rgba(124,92,252,0.1);
+    --win:#5CD68C;
+    --loss:#E0616F;
+
+}
+
+
+body{
+
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,sans-serif;
+    overflow-x:hidden;
+
+}
+
+
+a{
+    color:inherit;
+}
+
+
+/* Navigation */
+
+
+nav{
+
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:26px 7%;
+
+    background:var(--bg);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.logo{
+
+    font-family:Archivo;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:2px;
+
+    color:var(--text);
+
+}
+
+
+nav ul{
+
+    display:flex;
+    gap:40px;
+    list-style:none;
+
+}
+
+
+nav a{
+
+    color:var(--text-dim);
+    text-decoration:none;
+    font-size:15px;
+
+    position:relative;
+
+    transition:color .2s;
+
+}
+
+
+nav a::after{
+
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:1px;
+    background:var(--accent);
+    transition:width .25s ease;
+
+}
+
+
+nav a:hover{
+
+    color:var(--text);
+
+}
+
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+nav a.active{
+
+    color:var(--text);
+
+}
+
+
+nav a.active::after{
+
+    width:100%;
+
+}
+
+
+/* Page header */
+
+
+.page-head{
+
+    width:86%;
+    max-width:1280px;
+    margin:70px auto 50px;
+
+}
+
+
+.eyebrow{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--text-dim);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+
+}
+
+
+.page-head h1{
+
+    font-family:Archivo;
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:-1px;
+
+}
+
+
+.page-head p{
+
+    margin-top:16px;
+    color:var(--text-dim);
+    font-size:15px;
+    max-width:480px;
+    line-height:1.7;
+
+}
+
+
+/* Section shell (shared by Upcoming + Results) */
+
+
+.matches-section{
+
+    width:86%;
+    max-width:1280px;
+    margin:0 auto 90px;
+
+}
+
+
+.section-head{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:28px;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.section-head h2{
+
+    font-family:Archivo;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-0.3px;
+
+}
+
+
+.section-count{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    letter-spacing:1px;
+
+}
+
+
+.match-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+}
+
+
+/* Match card */
+
+
+.match-card{
+
+    background:#141416;
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    padding:22px 26px;
+
+    display:grid;
+    grid-template-columns:120px 1fr auto;
+    align-items:center;
+    gap:24px;
+
+    transition:border-color .2s;
+
+}
+
+
+.match-card:hover{
+
+    border-color:var(--accent);
+
+}
+
+
+.match-when{
+
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+
+}
+
+
+.match-date{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--text);
+
+}
+
+
+.match-time{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+
+}
+
+
+.match-teams{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+}
+
+
+.team{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:Archivo;
+    font-size:16px;
+    font-weight:700;
+
+}
+
+
+.team-crest{
+
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#1B1B1E;
+    border:1px solid var(--border);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--text-dim);
+    flex-shrink:0;
+
+}
+
+.team-crest.us{
+
+    background:var(--accent-soft);
+    border-color:var(--accent);
+    color:var(--accent);
+
+}
+
+
+.vs{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+
+}
+
+
+.match-meta{
+
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    align-items:flex-end;
+    text-align:right;
+
+}
+
+
+.match-event{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--text-dim);
+
+}
+
+
+.watch-link{
+
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    font-size:13px;
+    font-weight:500;
+
+    color:var(--text);
+
+    text-decoration:none;
+
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:7px 14px;
+
+    transition:border-color .2s, color .2s;
+
+}
+
+
+.watch-link:hover{
+
+    border-color:var(--accent);
+    color:var(--accent);
+
+}
+
+
+.result-tag{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:1px;
+    padding:4px 10px;
+    border-radius:5px;
+
+}
+
+
+.result-tag.win{
+
+    color:var(--win);
+    background:rgba(92,214,140,0.1);
+
+}
+
+
+.result-tag.loss{
+
+    color:var(--loss);
+    background:rgba(224,97,111,0.1);
+
+}
+
+
+.score{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:15px;
+    color:var(--text);
+
+}
+
+
+/* Empty state */
+
+
+.empty-state{
+
+    background:#141416;
+    border:1px dashed var(--border);
+    border-radius:10px;
+
+    padding:44px 26px;
+
+    text-align:center;
+
+    color:var(--text-dim);
+    font-size:14px;
+    line-height:1.7;
+
+}
+
+
+.empty-state strong{
+
+    display:block;
+    color:var(--text);
+    font-family:Archivo;
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:8px;
+
+}
+
+
+/* Mobile */
+
+
+@media(max-width:900px){
+
+    nav ul{
+        display:none;
+    }
+
+    .page-head h1{
+        font-size:34px;
+    }
+
+    .match-card{
+
+        grid-template-columns:1fr;
+        gap:14px;
+
+    }
+
+    .match-meta{
+
+        align-items:flex-start;
+        text-align:left;
+
+    }
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<nav>
+
+<div class="logo">
+GLIDE
+</div>
+
+
+<ul>
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="roster.html">Roster</a></li>
+
+<li><a href="../index.html#news">News</a></li>
+
+<li><a href="matches.html" class="active">Matches</a></li>
+
+</ul>
+
+
+</nav>
+
+
+
+
+<section class="page-head">
+
+<div class="eyebrow">CS2 · Matches</div>
+
+<h1>Matches</h1>
+
+<p>
+Where to catch Glide play, and how we got on. We're still building our roster, so nothing's on the calendar just yet — check back once we're competing.
+</p>
+
+</section>
+
+
+
+
+<!-- ===================== -->
+<!-- UPCOMING MATCHES      -->
+<!-- ===================== -->
+
+<section class="matches-section">
+
+<div class="section-head">
+<h2>Upcoming</h2>
+<div class="section-count">0 scheduled</div>
+</div>
+
+<div class="match-list">
+
+<!--
+  Copy this block for each upcoming match once one is scheduled,
+  then delete the .empty-state div below.
+
+  <div class="match-card">
+
+    <div class="match-when">
+      <div class="match-date">SAT, AUG 15</div>
+      <div class="match-time">19:00 BST</div>
+    </div>
+
+    <div class="match-teams">
+      <div class="team">
+        <div class="team-crest us">GL</div>
+        Glide
+      </div>
+      <div class="vs">vs</div>
+      <div class="team">
+        <div class="team-crest">OPP</div>
+        Opponent Name
+      </div>
+    </div>
+
+    <div class="match-meta">
+      <div class="match-event">ESEA Open · Week 3</div>
+      <a class="watch-link" href="https://twitch.tv/yourchannel" target="_blank" rel="noopener">
+        Watch on Twitch
+      </a>
+    </div>
+
+  </div>
+-->
+
+<div class="empty-state">
+<strong>No upcoming matches yet</strong>
+We're still recruiting players. Once we're signed up to a league or tournament, fixtures will show up here with the date, opponent, and where to watch.
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- ===================== -->
+<!-- RESULTS               -->
+<!-- ===================== -->
+
+<section class="matches-section">
+
+<div class="section-head">
+<h2>Results</h2>
+<div class="section-count">0 played</div>
+</div>
+
+<div class="match-list">
+
+<!--
+  Copy this block for each completed match.
+  Use result-tag "win" or "loss" to color the badge.
+
+  <div class="match-card">
+
+    <div class="match-when">
+      <div class="match-date">SAT, JUL 20</div>
+      <div class="match-time">FT</div>
+    </div>
+
+    <div class="match-teams">
+      <div class="team">
+        <div class="team-crest us">GL</div>
+        Glide
+      </div>
+      <div class="vs">vs</div>
+      <div class="team">
+        <div class="team-crest">OPP</div>
+        Opponent Name
+      </div>
+    </div>
+
+    <div class="match-meta">
+      <span class="result-tag win">WIN</span>
+      <div class="score">2 – 0</div>
+    </div>
+
+  </div>
+-->
+
+<div class="empty-state">
+<strong>No results yet</strong>
+Match history will appear here once Glide has played its first official game.
+</div>
+
+</div>
+
+</section>
+
+
+
+</body>
+
+</html>
