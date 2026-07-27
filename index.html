@@ -220,7 +220,8 @@ nav a:hover::after{
     margin-top:38px;
 
     display:flex;
-    gap:14px;
+    gap:10px;
+    flex-wrap:wrap;
 
 }
 
@@ -229,13 +230,13 @@ nav a:hover::after{
 
     display:inline-block;
 
-    padding:14px 30px;
+    padding:13px 22px;
 
     border-radius:8px;
 
     text-decoration:none;
 
-    font-size:15px;
+    font-size:14px;
     font-weight:500;
 
     transition:background .2s, color .2s, border-color .2s;
@@ -566,6 +567,94 @@ nav a:hover::after{
 
 
 
+/* ===================== */
+/* CONTACT               */
+/* ===================== */
+
+.contact{
+
+    width:86%;
+    max-width:1280px;
+    margin:0 auto 120px;
+
+}
+
+.contact-box{
+
+    background:#141416;
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    padding:60px 7%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+
+}
+
+.contact-eyebrow{
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--text-dim);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+
+}
+
+.contact-box h2{
+
+    font-family:Archivo;
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:-0.5px;
+
+}
+
+.contact-box p{
+
+    margin-top:16px;
+    color:var(--text-dim);
+    font-size:15px;
+    max-width:440px;
+    line-height:1.7;
+
+}
+
+.contact-email{
+
+    display:inline-block;
+
+    margin-top:28px;
+
+    font-family:'JetBrains Mono',monospace;
+    font-size:17px;
+    font-weight:500;
+
+    color:var(--text);
+
+    text-decoration:none;
+
+    border:1px solid var(--border);
+    border-radius:8px;
+
+    padding:14px 30px;
+
+    transition:border-color .2s, color .2s;
+
+}
+
+.contact-email:hover{
+
+    border-color:var(--accent);
+    color:var(--accent);
+
+}
+
+
 /* Mobile */
 
 
@@ -645,6 +734,18 @@ nav ul{
 
 }
 
+.contact-box{
+
+    padding:44px 8%;
+
+}
+
+.contact-box h2{
+
+    font-size:26px;
+
+}
+
 
 }
 
@@ -717,6 +818,11 @@ View Roster
 
 <a class="btn secondary" href="/pages/matches">
 Upcoming Matches
+</a>
+
+
+<a class="btn secondary" href="/#contact">
+Contact Us
 </a>
 
 
@@ -798,6 +904,32 @@ This is the first post. Roster is currently in progress, updating soon 🫣
 
 </div>
 
+
+</section>
+
+
+
+<!-- ===================== -->
+<!-- CONTACT               -->
+<!-- ===================== -->
+
+<section class="contact" id="contact">
+
+<div class="contact-box">
+
+<div class="contact-eyebrow">Get in touch</div>
+
+<h2>Contact Us</h2>
+
+<p>
+Questions about the team, sponsorship, or joining the roster? Reach out and we'll get back to you.
+</p>
+
+<a class="contact-email" href="mailto:glidecs@outlook.com">
+glidecs@outlook.com
+</a>
+
+</div>
 
 </section>
 
